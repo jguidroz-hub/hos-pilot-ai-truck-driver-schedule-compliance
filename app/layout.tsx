@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'HOS Pilot - AI Truck Driver Schedule & Compliance',
-  description: 'Value Proposition: Solves complex Hours of Service (HOS) compliance and optimizes sleeper berth splits for truck drivers and logistics companies, reducing risks and improving rest planning.',
+  description: 'Value Proposition: Solves complex Hours of Service (HOS) compliance and optimizes sleeper berth splits for truck driverLogs and logistics companies, reducing risks and improving rest planning.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
