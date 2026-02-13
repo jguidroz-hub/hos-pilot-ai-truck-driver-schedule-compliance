@@ -28,17 +28,17 @@ export default function DashboardPage() {
 
       <h2 className="text-lg font-semibold mb-4">Quick Access</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
-          <a href="/dashboard/drivers" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
-            <h3 className="font-medium">Driver Management</h3>
-            <p className="text-sm text-gray-500">View, create, and manage driver profiles</p>
-          </a>
           <a href="/dashboard/logs" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
-            <h3 className="font-medium">Driving Logs</h3>
-            <p className="text-sm text-gray-500">Detailed HOS tracking and compliance reporting</p>
+            <h3 className="font-medium">Driver Logs</h3>
+            <p className="text-sm text-gray-500">View and manage driver log entries</p>
           </a>
-          <a href="/dashboard/fleet" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
-            <h3 className="font-medium">Fleet Management</h3>
-            <p className="text-sm text-gray-500">Track vehicles and current driver assignments</p>
+          <a href="/dashboard/vehicles" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
+            <h3 className="font-medium">Vehicle Management</h3>
+            <p className="text-sm text-gray-500">Track and manage fleet vehicles</p>
+          </a>
+          <a href="/dashboard/compliance-report" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
+            <h3 className="font-medium">Compliance Insights</h3>
+            <p className="text-sm text-gray-500">Detailed HOS compliance analytics</p>
           </a>
         <a href="/dashboard/settings" className="block p-4 border rounded-lg hover:bg-blue-50 transition">
           <h3 className="font-medium">Settings</h3>

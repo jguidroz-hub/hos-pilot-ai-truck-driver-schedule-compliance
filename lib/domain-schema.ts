@@ -25,43 +25,29 @@ export const auditLog = pgTable('audit_log', {
   createdAt: timestamp('created_at').notNull().default(sql`now()`),
 });
 
-// Truck drivers and their core profile information
-export const drivers = pgTable('drivers', {
+// Track individual driver Hours of Service (HOS) records
+export const driverLogs = pgTable('driver_logs', {
   id: text('id').primaryKey(),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-  fullName: text('full_name').notNull(),
-  licenseNumber: text('license_number').unique(),
-  commercialLicenseExpiry: timestamp('commercial_license_expiry'),
-  currentStatus: text('current_status').default('available'),
-  totalDrivingHours: text('total_driving_hours').default(0),
-  createdAt: timestamp('created_at'),
-  updatedAt: timestamp('updated_at'),
-});
-
-// Detailed HOS compliance tracking per trip
-export const drivingLogs = pgTable('driving_logs', {
-  id: text('id').primaryKey(),
-  userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-  driverId: text('driver_id').references(() => drivers.id, { onDelete: 'cascade' }),
   startTime: timestamp('start_time').notNull(),
-  endTime: timestamp('end_time'),
-  totalDriveTime: text('total_drive_time'),
-  totalOnDutyTime: text('total_on_duty_time'),
-  sleeperBerthTime: text('sleeper_berth_time'),
-  complianceStatus: text('compliance_status').default('pending'),
+  endTime: timestamp('end_time').notNull(),
+  totalDriveHours: text('total_drive_hours').notNull(),
+  sleeperBerthSplits: jsonb('sleeper_berth_splits').notNull(),
+  complianceStatus: text('compliance_status').notNull(),
+  vehicleId: text('vehicle_id').references(() => vehicles.id, { onDelete: 'cascade' }),
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
 });
 
-// Trucks and fleet vehicles tracked for compliance
+// Truck/vehicle information for HOS tracking
 export const vehicles = pgTable('vehicles', {
   id: text('id').primaryKey(),
   userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-  vehicleIdentifier: text('vehicle_identifier').unique(),
   vin: text('vin').unique(),
-  make: text('make'),
-  model: text('model'),
-  currentDriverId: text('current_driver_id').references(() => drivers.id, { onDelete: 'set null' }),
+  licensePlate: text('license_plate').notNull(),
+  make: text('make').notNull(),
+  model: text('model').notNull(),
+  year: integer('year').notNull(),
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
 });
