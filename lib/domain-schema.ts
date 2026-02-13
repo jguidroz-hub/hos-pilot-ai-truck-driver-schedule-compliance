@@ -51,3 +51,6 @@ export const vehicles = pgTable('vehicles', {
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
 });
+
+// Alias for route compatibility
+export const analyticsCompliance = userSettings;
